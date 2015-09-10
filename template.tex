@@ -1,0 +1,168 @@
+\documentclass[twocolumn, a4paper, 10pt]{article}
+\usepackage[cmex10]{amsmath}
+
+% makes everything a bit tighter
+\usepackage{microtype}
+
+\usepackage{amsopn}
+\usepackage{amsthm}
+\usepackage{amsmath}
+
+\usepackage{url}
+\usepackage{hyperref}
+
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png,.eps, .svg}
+
+% if you want to draw sth: have a look at tikz
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc, fit, shapes, decorations.markings, calendar}
+
+% comments for yourself
+\newcommand{\me}[1]{{\color{red}#1}}
+% and on the margin
+\newcommand{\meb}[1]{\marginpar{\small\textcolor{red}{#1}}}
+
+% comments for benny
+\newcommand{\cb}[1]{{\color{red}#1}}
+% and on the margin
+\newcommand{\cbb}[1]{\marginpar{\small\textcolor{red}{#1}}}
+
+% for lorem ipsum - you can remove that
+\usepackage{lipsum}
+
+\begin{document}
+\title{
+  The impact of password policies to graphical passwords.\\
+  \large Making android unlock patterns more secure \\
+  by introducing password policies to graphical passwords.}
+
+\author{
+	Alexa Schlegel
+}
+
+\maketitle
+
+\def\abstractname{{\textbf Abstract}}
+\begin{abstract}
+{
+\bfseries
+Smartphones are widely distributed and Android Phones dominate the market with about 78.0\% marked share\footnote{\url{http://www.idc.com/prodserv/smartphone-os-market-share.jsp}, 31.08.2015 - 12:52PM}. The Android Unlock Pattern is a graphical password scheme using a $3\times3$ grid to draw patterns. It is widely used to lock smartphones instead of using a PIN number or textural passwords.\\
+
+Recent studies have shown that security of Android Unlock Patterns is comparable to 3 digit PIN numbers and therefore very insecure. People choose easy to guess passwords, similar to textual passwords like ``password123''. Looking at textual passwords, password policies\footnote{Password Policies are restrictions during the password creation process (like using at least one number, one capital letter and password should be at least 6 characters long, and so on)} were introduced and lead to the creation of more secure passwords. The impact of password policies with respect to usability and security are widely studied.\\
+
+I want to introduce password policies to graphical password on the example of Android Unlock Patterns. The user will be guided and will get feedback during the creation process. A user study will be conducted. The introduction of password policies will improve the security of Android Unlock Patterns with no negative impact to Usability.
+}
+\end{abstract}
+
+
+\section{Introduction and background}
+According to different studies the Android Unlock Patterns are very insecure. So people choose passwords compared to password123\footnote{New data uncovers the surprising predictability of Android lock, \url{http://arstechnica.com/security/2015/08/new-data-uncovers-the-surprising-predictability-of-android-lock-patterns/}, 31.08.2015 - 15:21PM}. I want to introduce password policies for  graphical passwords like Android Unlock Patterns, similar to text based policies. So the security is higher, but usability is still good. I want to have guidance and feedback while password creation process.\\
+
+[TODO: What does Usability mean in this context? What does Security mean in this context? And how is both measured? What are metrics for password strength for Android Unlock Patterns?]\\
+
+Why did I choose the topic?\\
+Relevance to previous research?\\
+What is the contribution to research in the field?\\
+
+\section{Research Question}
+The purpose of this research is ...\\
+The research question can be formulated as follows:\\
+Maybe if I ``invent'' two different policies (P1 and P2) I could evaluate, which one is better.\\
+
+\begin{description}
+  \item[H1]
+  Patterns that are created with policies and visual feedback are stronger (more secure) than the passwords created in the normal way.
+  \item[H2]
+  Using policy P1 result in stronger password than using P2.
+\end{description}
+
+\section{Related Work}
+The related work part, can be divided into three parts:
+
+\begin{itemize}
+  \item advantages of graphical password in general, with focus usability and security
+  \item security aspects of Android Unlock Patterns
+  \item password policies for textual passwords with respect to usability and security
+\end{itemize}
+
+Marte Loge\footnote{\url{https://marteloge.no/}, 31.08.2015 - 15:30PM} wrote her master's thesis about ``Android Pattern Locks''. \emph{She found that a large percentage of them—44 percent—started in the top left-most node of the screen. A full 77 percent of them started in one of the four corners. The average number of nodes was about five, meaning there were fewer than 9,000 possible pattern combinations. A significant percentage of patterns had just four nodes, shrinking the pool of available combinations to 1,624. More often than not, patterns moved from left to right and top to bottom, another factor that makes guessing easier.}
+
+\subsection{Graphical Passwords}
+[TODO, PassGo, Why are graphical password so much better that textual passwords?]
+
+\subsection{Android Unlock Patterns}
+There is a recent User Study with close to 600 participants on security of Android Unlock Patterns by Uellenbeck. They collected patterns chosen by users and compared the distribution to the password who are theoretical available. They found out that the upper left corner and 3-point-long straight lines are typical patterns and entropy is general very low.\\
+
+They used a Markov-Chain model for cracking passwords. They found out that security is similar to 3-digit PIN numbers. They improved the scheme (circle, removing upper left corner) and did a second user study to evaluate their improvements.\footnote{Quantifying the Security of Graphical Passwords: The Case of Android Unlock Patterns }\\
+
+Sun et. al. did a study on the effect of password meters while choosing an Android Unlock Pattern. They showed that a password meter had an positive effect on the password strength. People using the password meter created more secure patterns than normal people. While creating a password people got feedback on the strength of the created password. Also the paper is giving a good theoretical background and introduces characteristics on patterns. Also a metric for security of patterns is introduced (very important).. The study lacks to measure the memorability of the created passwords. This is very sad actually!\footnote{Dissecting pattern unlock: The effect of pattern strength meter on pattern selection}\\
+
+There is another study by Aviv et. al. on Visual Perception of Usability and Security. Participants had to choose between password pairs and chose the one who was (1) more secure and (2) more usable. They found out that Usability and Security are inversely related. They also introduce pattern characteristics, but they are a bit different to Uellenbeck, worse looking at.\footnote{Understanding Visual Perceptions of Usability and Security of Android's Graphical Password Pattern}\\
+
+Security aspect like shoulder surfing attacks or smudge attacks do play an important role as well, but are not discussed here that much in detail.\footnote{Smudge Attacks on Smartphone Touch Screens}\\
+
+\subsection{Textual password and password policies}
+Looking at textual password a study by Shay et. al. shows that real-time feedback while password creation process helps the user to create stronger passwords with fewer errors. But also password policies may cause usability problems. [TODO cite]\footnote{A Spoonful of Sugar?: The Impact of Guidance and Feedback on Password-Creation Behavior}\\
+
+[TODO: a bit more here]\\
+
+\section{Theoretical Framework}
+Which theoretical approaches, will be employed in my research and why.
+
+\section{Research Design and Method}
+
+The aim is to improve the security of Android Unlock pattern, while keeping usability in mind. Improving security can be achieved in different ways:\\
+
+\begin{itemize}
+  \item modifying the pattern (leaving dots out) - study by Uellenbeck
+  \item making the pattern bigger 4x4 - User study by Aviv \& Kuber
+  \item using new patterns: random or circle pattern - User study by Uellenbeck
+  \item giving the user feedback about strength (a metric is needed here, which also needs to be evaluated first!) - User study by Sun
+  \item introducing password policies (similar to textual passwords) - needs to be evaluated 
+  \item guiding the user during pattern creation process (feedback on policies on the fly) - needs to be evaluated
+\end{itemize}
+
+I wand to create password policies for graphical password using the example of android unlock patterns and applying (5) and (6). Research has shown that is has an positive effect to security of textual password, but this has to be evaluated for graphical password as well, not only transferred.\\
+
+The study by Uellenbeck changed the pattern to improve security. This is one possibility and also worth investigating further. One study integrated a security meter, which goes kind of in the direction I am heading. But they did not put any constraints on the user during the creation process like: ``you have to do one intersection and at least 6 connected points'' for example.\\
+
+As studies showed, the length usually is 4, not a lot of intersections are used, and so on. I think people are not really aware of the rules how to create a pattern and they therefore dont know what patterns are secure.\\
+
+So I think guiding the user while creating a pattern would be a good idea to create more secure passwords. Also research on text based password has shown that this guidance/feedback leads to stronger passwords and so on. [TODO cite]\\
+
+The following research plan consist of the following steps:\\
+
+\begin{enumerate}
+\item Finding a useful metric
+\item Summarize all findings of recent studies related to Android Unlock Patterns
+\item Derive graphical password policies (P1 and P2)
+\item Test policies with pen \& paper (User Study)
+\item Summarize all findings related to feedback/guidance related to password policies (also find stuff related to mobile phones)
+\item Designing and implementing feedback and guidance to Android Unlock Pattern application
+\item Conducting a User Study
+\end{enumerate}
+
+First of all a metric for evaluating the strength of a patterns needs to be found. Looking at Uellenbeck and (maybe better) Sun, so I can just use one or create a better one. Based on the metrics, ideas for a good policy can be derived. To be more precise and accurate the chosen metric should be evaluated first!\\
+
+Also based on the other findings in recent usability studies regarding Android Unlock Patterns (characteristics of patterns used in the real world, distribution of patterns in the real world) further ideas for policies can be derived.\\
+
+The effectiveness and usefulness of the collected ideas for policies needs to be found out and rated by some criteria. The two different policies P1 and P2 need to be put together, based on the previous rating (if needed, not sure yet).\\
+
+To get a first impression of the effect of policies a pen \& paper study should be conducted.\\
+
+Based on the (maybe changed) policies, the guiding and feedback process can be designed and implemented keeping HCI principles in mind. [TODO: find some stuff on visual feedback/guidance to users on mobile devices, I think the study was just conducted for desktop users :(, but maybe principles can be transferred to mobile]\\
+
+A user study should be carried out to evaluate the impact of policies in general and compare P1 and P2. Also the study should cover the memorability of created patterns (in contrast to the study conducted by Sun et. al.)\\
+
+[TODO - limitations]
+
+{
+	\bibliographystyle{plain}
+	\bibliography{bibliography}
+}
+
+\appendix
+\end{document}
