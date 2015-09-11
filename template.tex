@@ -20,22 +20,11 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc, fit, shapes, decorations.markings, calendar}
 
-% comments for yourself
-\newcommand{\me}[1]{{\color{red}#1}}
-% and on the margin
-\newcommand{\meb}[1]{\marginpar{\small\textcolor{red}{#1}}}
-
-% comments for benny
-\newcommand{\cb}[1]{{\color{red}#1}}
-% and on the margin
-\newcommand{\cbb}[1]{\marginpar{\small\textcolor{red}{#1}}}
-
-% for lorem ipsum - you can remove that
-\usepackage{lipsum}
 
 \begin{document}
 \title{
   The impact of password policies to graphical passwords.\\
+  \\
   \large Making android unlock patterns more secure \\
   by introducing password policies to graphical passwords.}
 
@@ -49,8 +38,6 @@
 \begin{abstract}
 {
 \bfseries
-Smartphones are widely distributed and Android Phones dominate the market with about 78.0\% marked share\footnote{\url{http://www.idc.com/prodserv/smartphone-os-market-share.jsp}, 31.08.2015 - 12:52PM}. The Android Unlock Pattern is a graphical password scheme using a $3\times3$ grid to draw patterns. It is widely used to lock smartphones instead of using a PIN number or textural passwords.\\
-
 Recent studies have shown that security of Android Unlock Patterns is comparable to 3 digit PIN numbers and therefore very insecure. People choose easy to guess passwords, similar to textual passwords like ``password123''. Looking at textual passwords, password policies\footnote{Password Policies are restrictions during the password creation process (like using at least one number, one capital letter and password should be at least 6 characters long, and so on)} were introduced and lead to the creation of more secure passwords. The impact of password policies with respect to usability and security are widely studied.\\
 
 I want to introduce password policies to graphical password on the example of Android Unlock Patterns. The user will be guided and will get feedback during the creation process. A user study will be conducted. The introduction of password policies will improve the security of Android Unlock Patterns with no negative impact to Usability.
@@ -59,31 +46,43 @@ I want to introduce password policies to graphical password on the example of An
 
 
 \section{Introduction and background}
+Authentication is the act of confirming the correctnes of an identity. There are three different categories of authentication, called factors. The (1) knowledge factors is something the user knows (e.g. password, PIN), (2) ownership factors is something the user has (e.g. ID card, security token like smart card) and (3) the inherence factor is something the user is or does (e.g. biometric data like fingerprint).[TODO/cite]\\
+
+On smartphones authentication needs to be done in general on a regular basis for unlocking. Different manufacturers implemented various authentication methods, PIN and textual passwords are widely used. Methods like graphical password and biometric authentication (e.g. fingerprint) becoming more popular. Smartphones are widely distributed now and Android Phones dominating the market with about 78.0\% marked share\footnote{\url{http://www.idc.com/prodserv/smartphone-os-market-share.jsp}, 31.08.2015 - 12:52PM}, this makes it worse looking in detail at Android Unlock Methods.\\
+
+The Android Unlock Pattern is a recall based graphical password scheme using a $3\times3$ grid with 9 nodes. It requires the user to draw a pattern on the screen by drawing lines. It is widely used, because it is the default authentification choice to lock smartphones instead of using a PIN number or textual passwords.\\
+
+[TODO] How does it work, explain rules in a short way.\\
+[TODO/img] put an image here of a android pattern\\
+
+Roter Faden:\\
+graphical password are in general more usable to users (what does usability means in this context?)\\
+security of graphical password in general, studies have shown that also insecure same as text base, no password leeks yet so only from in lab studies\\
+Studies showed insecure of normal android unlock pattern stuff, just like textbased ones\\
+some studies tried to make in more secure my applying the following things (methos)\\
+password policies make text based more secure, if they are applied in a usable way, some studies have showed that\\
+transfere password policies to graphical password and increase security, while keeping the advantages of good usability\\
+measure the impact of policies for graphical password, same positive effect as with text base passwords?\\
+
+[TODO/weiter überarbeiten]
 According to different studies the Android Unlock Patterns are very insecure. So people choose passwords compared to password123\footnote{New data uncovers the surprising predictability of Android lock, \url{http://arstechnica.com/security/2015/08/new-data-uncovers-the-surprising-predictability-of-android-lock-patterns/}, 31.08.2015 - 15:21PM}. I want to introduce password policies for  graphical passwords like Android Unlock Patterns, similar to text based policies. So the security is higher, but usability is still good. I want to have guidance and feedback while password creation process.\\
 
 [TODO: What does Usability mean in this context? What does Security mean in this context? And how is both measured? What are metrics for password strength for Android Unlock Patterns?]\\
 
-Why did I choose the topic?\\
-Relevance to previous research?\\
-What is the contribution to research in the field?\\
-
 \section{Research Question}
-The purpose of this research is ...\\
-The research question can be formulated as follows:\\
-Maybe if I ``invent'' two different policies (P1 and P2) I could evaluate, which one is better.\\
+The purpose of this research is to find out, if password policies applied to graphical passwords (like android unlock patterns) increase security in the ``real world''. The research question can be formulated as follows:\\
 
 \begin{description}
   \item[H1]
-  Patterns that are created with policies and visual feedback are stronger (more secure) than the passwords created in the normal way.
-  \item[H2]
-  Using policy P1 result in stronger password than using P2.
+  Patterns that are created using a password policy are stronger (more secure) than patterns created in the conventional way.
 \end{description}
+
 
 \section{Related Work}
 The related work part, can be divided into three parts:
 
 \begin{itemize}
-  \item advantages of graphical password in general, with focus usability and security
+  \item graphical password (usability and security)
   \item security aspects of Android Unlock Patterns
   \item password policies for textual passwords with respect to usability and security
 \end{itemize}
@@ -91,9 +90,32 @@ The related work part, can be divided into three parts:
 Marte Loge\footnote{\url{https://marteloge.no/}, 31.08.2015 - 15:30PM} wrote her master's thesis about ``Android Pattern Locks''. \emph{She found that a large percentage of them—44 percent—started in the top left-most node of the screen. A full 77 percent of them started in one of the four corners. The average number of nodes was about five, meaning there were fewer than 9,000 possible pattern combinations. A significant percentage of patterns had just four nodes, shrinking the pool of available combinations to 1,624. More often than not, patterns moved from left to right and top to bottom, another factor that makes guessing easier.}
 
 \subsection{Graphical Passwords}
-[TODO, PassGo, Why are graphical password so much better that textual passwords?]
 
-\subsection{Android Unlock Patterns}
+The most used and studies graphical password schemes are PassGo, DAS and now getting more and more popular Anroid Unlock Patterns.[TODO/cite]\\
+[ein Satz die DAS und PassGo beschreiben]\\
+
+* graphical password - usability and security definitions\\
+The term \emph{usability} of graphical password refers to the chacateristic of a certain pattern of how memorable it is or how easy it is to recall later (memorability and repeatability, remember).[TODO/cite] The \emph{security} or \emph{strength} of a graphical password decribes how hard it is to guess the pattern for an attacker. Both properties usability and security need to be measured with some metric to garantee comparability.
+
+[TODO/cite]The usability of passphrases for authentication: An empirical field study(Keith)
+``Three principal concepts in literature have guided the current research. (1) Effectiveness refers to the ‘‘strength’’ of a password against attacks and represents how difficult it would be for a hacker to guess or crack the password. (2) Usability refers to how easy a password is for a user to both remember and correctly enter into a login prompt. (3) Satisfaction refers to the psychological perception a user has about the effectiveness and usability of passwords.''
+
+Graphical password are in general more usable because of XYZ [TODO/cite some stuff.]
+
+\paragraph{Graphical password and usability}
+* graphical password - usability advantages/disadvantages over text based or PIN - why\\
+* study by Aviv (pairwise preference usability/security)
+
+
+\paragraph{Graphical password and security}
+* graphical passwords - password complexity properties (security measurement)\\
+* attacs like, guessing, dictionary attacs, shoulder surfinh, smudge attacs, what else is there
+* what are common metrics for other graphical things?
+
+GraphNeighbors:
+Hampering Shoulder-Surfing Attacks on Smartphones
+
+\subsection{Security of Android Unlock Patterns}
 There is a recent User Study with close to 600 participants on security of Android Unlock Patterns by Uellenbeck. They collected patterns chosen by users and compared the distribution to the password who are theoretical available. They found out that the upper left corner and 3-point-long straight lines are typical patterns and entropy is general very low.\\
 
 They used a Markov-Chain model for cracking passwords. They found out that security is similar to 3-digit PIN numbers. They improved the scheme (circle, removing upper left corner) and did a second user study to evaluate their improvements.\footnote{Quantifying the Security of Graphical Passwords: The Case of Android Unlock Patterns }\\
