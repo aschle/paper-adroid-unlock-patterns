@@ -36,13 +36,13 @@ expanding the effective password-space.
 
 # background on persuasive password security as an alternative approach
 
-* Persuasive password security
-* Persuasion for stronger passwords Motivation and pilot study
-* Graphical password authentication using cued click points
-* passpoints: design and logitudinal evaluation of a graphical password system
-* persuasio as education for computer security
-
--> still need to read this und zusammenfassen
+* make users to choose strong passwords by creating suitabe user interfaces (Forget:2008:ITP:1408664.1408666, forget2008persuasion)
+* cued click points reduce predictable hot sponts on graphical passwords (prasathgraphical)
+* persuasion authentication framework (forget2007persuasion, forget2008persuasion)
+ I
+ v
+  - theoretical password space (TPS) 
+  - effective password space (EPS)
 
 # pattern strength
 
@@ -55,9 +55,9 @@ expanding the effective password-space.
 * they say that they compare security, memorability and usability of the interfaces
 ** security is done with markov model (weak, strong, medium), this is clear
 ** pattern lenght is understood as uability???
-** memorability they just did not measure on MTurk!, but run study with 60 participants seperately, there is no difference beetween interface, but no study design in explained at all, 20 minutes was teste
+** memorability they just did not measure on MTurk!, but run study with 60 participants seperately, there is no difference beetween interface, but no study design is explained at all, 20 minutes was tested
 ** the way people perceive security (they found out doing a pre-study) and the way security is measured differs, is stays in conlflict to "people are already aware of which patterns are more secure"
-** I think in-lab studyes do not reflect the real world, they also stated that after 30 minutes android phones lock, why test 30 minutes than, there is no explanation for that
+** I think in-lab studies do not reflect the real world, they also stated that after 30 minutes android phones lock, why test 30 minutes than, there is no explanation for that
 
 
 
