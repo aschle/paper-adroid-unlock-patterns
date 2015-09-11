@@ -1,4 +1,4 @@
-# Research Prpoposal
+# Research Proposal
 This is a research proposal on how to improve security of android unlock patterns, keeping usability in mind.
 
 This paper is part of the seminar *Privacy in the Electronic Society* at [Freie Universität Berlin](
