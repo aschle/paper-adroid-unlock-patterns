@@ -1,8 +1,9 @@
 #Fortifying Android Patterns using Persuasive Security Framework
-persuasive secureity framework -  a set of principles to get users to behave more securely
+
+* persuasive secureity framework -  a set of principles to get users to behave more securely
 
 1. Blinking starting point
-2. EPSM continous feedback
+2. EPSM continous feedback (week, medium strong)
 
 * Participants - 270 from AmazonMTurk
 * 60% chose strong passwords with blinking

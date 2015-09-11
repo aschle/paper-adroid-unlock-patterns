@@ -1,6 +1,13 @@
 \documentclass[twocolumn, a4paper, 10pt]{article}
 \usepackage[cmex10]{amsmath}
 
+% \usepackage{helvet}
+% \renewcommand{\familydefault}{\sfdefault}
+% \fontfamily{phv}\selectfont
+
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault}
+
 % makes everything a bit tighter
 \usepackage{microtype}
 
@@ -24,7 +31,6 @@
 \begin{document}
 \title{
   The impact of password policies to graphical passwords.\\
-  \\
   \large Making android unlock patterns more secure \\
   by introducing password policies to graphical passwords.}
 
@@ -33,6 +39,7 @@
 }
 
 \maketitle
+
 
 \def\abstractname{{\textbf Abstract}}
 \begin{abstract}
@@ -52,8 +59,8 @@ On smartphones authentication needs to be done in general on a regular basis for
 
 The Android Unlock Pattern is a recall based graphical password scheme using a $3\times3$ grid with 9 nodes. It requires the user to draw a pattern on the screen by drawing lines. It is widely used, because it is the default authentification choice to lock smartphones instead of using a PIN number or textual passwords.\\
 
-[TODO] How does it work, explain rules in a short way.\\
-[TODO/img] put an image here of a android pattern\\
+TODO How does it work, explain rules in a short way.\\
+TODO put an image here of a android pattern\\
 
 Roter Faden:\\
 graphical password are in general more usable to users (what does usability means in this context?)\\
@@ -92,7 +99,7 @@ Marte Loge\footnote{\url{https://marteloge.no/}, 31.08.2015 - 15:30PM} wrote her
 \subsection{Graphical Passwords}
 
 The most used and studies graphical password schemes are PassGo, DAS and now getting more and more popular Anroid Unlock Patterns.[TODO/cite]\\
-[ein Satz die DAS und PassGo beschreiben]\\
+(ein Satz die DAS und PassGo beschreiben)\\
 
 * graphical password - usability and security definitions\\
 The term \emph{usability} of graphical password refers to the chacateristic of a certain pattern of how memorable it is or how easy it is to recall later (memorability and repeatability, remember).[TODO/cite] The \emph{security} or \emph{strength} of a graphical password decribes how hard it is to guess the pattern for an attacker. Both properties usability and security need to be measured with some metric to garantee comparability.
