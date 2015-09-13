@@ -1,12 +1,6 @@
 Papers stating Adroid Unlock Patterns are insecure
 --------------------------------------------------
 
-* Uellenbeck!
-Quantifying the Security of Graphical Passwords: The Case of Android Unlock Patterns
-
-* Sun
-Dissecting pattern unlock: The effect of pattern strength meter on pattern selection
-
 * Aviv-
 Smudge Attacks on Smartphone Touch Screens
 
