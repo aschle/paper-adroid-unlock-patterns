@@ -32,7 +32,31 @@
 * training set and testset a subsetof defensive patterns 
 * offensive set is additional training data
 
-## Pttern stregth
-* different approaches: resistance against a specific password cracker, distribution of passwords
+## Pattern stregth
+* on a hight level we can distinguish approaches: resistance against a specific password cracker, distribution of passwords
 * number of possible measues can be found in Bonneau (bonneau2012science)
-* partial guessing entropy estimate
+* partial guessing entropy estimate, can be used to measure the strength of a password distribution
+* guessing entropy, it measures the average  number of guesses that the optimal attack needs in order to find the correkt password
+* partial guessing entropy, attcker usually satisfies with breaking a certain fraction of accounts
+
+## Results
+*  with 10 guesses 4% of defensives are guessed and 7% of offensive patterns
+*  with 30 guesses 9% defensive and 19% of offensive patterns
+*  who sais what number is bad?
+*  close to entropy od 2-digit PIN nubers (6.64) and 3-digit PIN numbers (9.97), here is has 8.72 (defensive), and 7.56 (offensive)
+
+## Findings and alternative patterns
+* bias of starting point towards top left corner
+* choosing adjacent points with euclidian distance 1, then diagonaly adjacent points
+* tendency to stay at the border, avoiding middle point
+* tendency for straight lines and right angles
+1. Leftout small pattern (removeing upper left point)
+2. Leftout large pattern (adden bottom line with missig bottem right dot)
+3. circle pattern
+4. random pattern (no three point are on one line)
+
+### Findings in Study
+* circle performes best, bias of first point is similar to orgininal one
+* random very week
+* chose still thinght like letters even in random they try to find patterns
+* memorability - no data on long term development
