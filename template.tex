@@ -25,12 +25,11 @@
 % if you want to draw sth: have a look at tikz
 \usepackage{tikz}
 \usetikzlibrary{positioning}
-\usetikzlibrary{calc, fit, shapes, decorations.markings, calendar}
-
+\usetikzlibrary{calc, fit, shapes, decorations.markings, calendar}	
 
 \begin{document}
 \title{
-	Improving the Security of Android Unlock Patterns by giving Feedback to the user during the Password Creation Process}
+	Improving the Security of Android Unlock Patterns by giving Feedback to the User during the Password-Creation Process}
 
 \author{
 	Alexa Schlegel
@@ -43,191 +42,207 @@
 \begin{abstract}
 {
 \bfseries
-\textit{Android Unlock Pattern} is a graphical password scheme, which has been widely adopted for unlocking the screen on Android smart phones. Instead of using a PIN number or textual password, the user can set up an unlock pattern by connecting dots in a $3\times3$ grid.
-In theory the security of Android Unlock Pattern is more secure than a 5-digit PIN scheme. Several studies have shown that users tend to pick easy to guess passwords, so the security of user chosen patterns is close to a 3-digit PIN scheme. To overcome the problem of weak passwords textual password schemes integrated \textit{password composition policies}. In general this leads to more security, but sometimes can have a negative effect on usability, when HCI principles are disregarded.
-The following research proposal aims to introduce password creation policies to graphical passwords with having no negative impact on usability. The user will be guided and will get constructive feedback during the password creation process to encourage stronger passwords.  A user study will be conducted.
+Android Unlock Pattern is a graphical password scheme, which has been widely adopted for unlocking the screen on Android smart phones. Instead of using a PIN number or textual password, the user can set up an unlock pattern by connecting dots in a $3\times3$ grid.
+
+In theory Android Unlock Pattern are more secure than a 5-digit PIN scheme. Several studies have shown that users tend to pick easy to guess patterns, so the security of user chosen patterns is close to a 3-digit PIN scheme. To overcome the problem of weak passwords, textual password schemes integrated password-composition policies. In general, this leads to more security, but sometimes can have a negative effect on usability, when HCI principles are disregarded.
+
+The following research proposal aims to introduce password-creation policies to graphical passwords with having no negative impact on usability. The user will get constructive feedback, in form of hints how to create a stronger pattern, during the password-creation process to encourage stronger passwords.  A user study will be conducted.
 }
 \end{abstract}
 
+
 \section{Introduction}
 \label{sec:intro}
-* authentication on smart phones needs to be done on a regular basis for unlocking\\
-* different manufacturers implemented various authentication methods\\ * text-base passwords and PIN numbers are widely used[TODO/cite]\\
-* smart phones are widely distributed now and Android phones dominating the market with about 78.0\% marked share\footnote{\url{http://www.idc.com/prodserv/smartphone-os-market-share.jsp}, 31.08.2015 - 12:52PM}\\
-* Android Unlock Pattern, a \textit{recall-based} graphical password scheme, it is the default authentication choice and therefor used very often, one user study with 51\% using Android unlock pattern - \cite{VanBruggen:2013:MSU:2501604.2501614} another on stating 48\% to 56\%\cite{van2014studying}\\
-* like textual password, graphical passwords are \textit{knowledge-based} authentication mechanism in which users enter a shared secret as evidence of their identity\\
-* during enrollment, the user has to choose a pattern with 4-9 dots and during the authentication phase, needs to recall the pattern and draw the path on the screen\\
-* The user can select a path according to the following rules:
+
+Authentication on smart phones needs to be done on a regular basis for unlocking the device. Different manufacturers implemented various authentication methods. Widely used and well known are textual password and PIN numbers. Looking at the distribution of smart phone today, Android phones are dominating the market with about 78.0\%\footnote{\url{http://www.idc.com/prodserv/smartphone-os-market-share.jsp}, 31.08.2015 - 12:52PM} marked share. The Android Unlock Pattern, a \textit{recall-based} graphical password scheme is the default authentication choice and therefor used very often. According to recent studies about 50\% of Android users are using Android unlock pattern~\cite{VanBruggen:2013:MSU:2501604.2501614, van2014studying}.
+
+Like textual passwords, a graphical password scheme is a \textit{knowledge-based} authentication mechanism in which users enter a shared secret as evidence of their identity. During enrollment, the user has to choose a pattern with four to nine dots and during the authentication phase, needs to recall the pattern and draw the path on the screen. The user can select a path according to the following rules:
+
 \begin{enumerate}
 	\item at least 4 points must be chosen
 	\item no point can be used twice
 	\item only straight lines are allowed
 	\item one cannot jump over points not visited before
 \end{enumerate}
-*  text-base passwords are typically difficult to remember and are predictable if user choice is allowed, so graphical password schemes have been proposed as a alternative to overcome those usability and security issues, ``reduced memory burden will facilitate the selection and use of more secure or less predictable passwords'', ``It is now clear that the graphical nature of schemes does not, by itself, avoid the problems typical of text password systems.''\cite{Biddle:2012:GPL:2333112.2333114}\\
-* \textit{theoretical password space (TPS)} is the total number of unique passwords that could be generated according to the given rules, \textit{effective password space (EPS)}  is the number of passwords in the TPS that are likely to be chosen by real-world users\cite{forget2007persuasion}\\
-* the TPS of the Android Unlock Pattern contains 389,112 possible patterns\cite{Aviv:2010:SAS:1925004.1925009}, which makes it in theory more secure than a 5-digit PIN scheme\\
-* Uellenbeck et al.\cite{Uellenbeck:2013:QSG:2508859.2516700} was the first to demonstrate the skewed distribution of Android Unlock Patterns, e.g. bias in starting point and $n$-grams, that make user chosen patterns guessable\\
-* 50\% of the patterns were able to be guessed with only 1000 guesses, this correspond to an EPS of 3-digit PIN scheme for half of the Android Users\\
-* building on this study, extended research has been done related to Android Unlock Pattern\cite{Sun2014308}\cite{siadati2015fortifying}\cite{Aviv:2014:UVP:2664243.2664253}\cite{Andriotis:2013:PSS:2462096.2462098} , which will be discussed in detail later\\
-* as there are no password leaks, like from text-based passwords, Android Unlock Pattern are only collected from in-lab studies (with real devices and/or pen\& paper studies) or from web-based studies (self-reporting or web applications)[TODO/howToCiteAPoster]\footnote{Aviv et al. ``Comparisons of Data Collection Methods for Android Graphical Pattern Unlock'' poster at SOUPS 2015}, with participants from Amazon Mechanical Turk\cite{siadati2015fortifying}\cite{Aviv:2014:UVP:2664243.2664253} or university students\cite{Uellenbeck:2013:QSG:2508859.2516700}\cite{Sun2014308}\\
-* security of Android Unlock Patterns can be improved either by (a) increase TPS or (b) expand EPS, different methods are applied and evaluated, like password meters (week, medium strong indication during creation process)\cite{Sun2014308}\cite{siadati2015fortifying}, random starting point\cite{siadati2015fortifying}, alternative patterns (e.g. circle) \cite{Uellenbeck:2013:QSG:2508859.2516700} and increasing grid size[TODO/howToCiteAPoster]\footnote{Aviv et al. ``Do bigger grid sizes mean better passwords? 3x3 vs. 4x4 Grid Sizes for Android Unlock Patterns'', poster at SOUPS 2015}\\
-* To the best of my knowledge there is no guidance and user feedback during the creation process evaluated or tested yet. Password meters are giving real time feedback about the underlying security, but provide no advice on what and why to change something to accomplish a more secure pattern.\\
-* password composition policies have been studied for text-based passwords a little bit\cite{Inglesant:2010:TCU:1753326.1753384}\cite{Komanduri:2011:PPM:1978942.1979321}, resulting in stronger password, but when to strong resulting in bad usability and strange user behavior\\
-* real-time Feedback has an positive impact on usability and can help users create strong passwords with fewer errors\cite{Shay:2015:SSI:2702123.2702586}\\
-* I want to transfer password policies to graphical passwords and increase security, while not decreasing usability.
+
+Textual passwords are typically difficult to remember, also depending on length, and are predictable if users are allowed to chose passwords. Graphical password schemes have been proposed as a alternative to overcome those usability and security issues. The reduced memory burden will facilitate the selection and use of more secure or less predictable passwords, but It is now clear that the graphical nature of schemes does not, by itself, avoid the problems typical of text password systems.~\cite{Biddle:2012:GPL:2333112.2333114}
+
+The \textit{theoretical password space}~(TPS) is the total number of unique passwords that can be generated according to the given rules, in contrast the \textit{effective password space}~(EPS)  is the number of passwords in the TPS that are likely to be chosen by real-world users.~\cite{forget2007persuasion} The TPS of Android Unlock Pattern contains 389.112 possible patterns~\cite{Aviv:2010:SAS:1925004.1925009}, which makes it in theory more secure than a 5-digit PIN scheme.
+
+Uellenbeck et al.~\cite{Uellenbeck:2013:QSG:2508859.2516700} was the first to demonstrate the skewed distribution of Android Unlock Patterns, e.g. bias in starting point and $n$-grams, that make user chosen patterns guessable. They showed that 50\% of the patterns were able to be guessed with only 1.000 guesses, this correspond to an EPS of a 3-digit PIN scheme for half of the Android Users. Building mainly on Uellenbeck's study, research has been done related to Android Unlock Pattern focusing on various topics:~\cite{Sun2014308, siadati2015fortifying, Aviv:2014:UVP:2664243.2664253, Andriotis:2013:PSS:2462096.2462098}. Those papers will be discussed later in detail.
+
+In contrast to textual passwords, which made available via password leaks, patterns are only collected from in-lab studies (using devices and/or pen\&paper) or from web-based studies (self-reporting or web applications).\footnote{Aviv et al. ``Comparisons of Data Collection Methods for Android Graphical Pattern Unlock'' poster at SOUPS 2015} Some studies~\cite{siadati2015fortifying, Aviv:2014:UVP:2664243.2664253} acquired participants from from Amazon Mechanical Turk~(MTurk) or did user tests with university students~\cite{Uellenbeck:2013:QSG:2508859.2516700, Sun2014308}
+
+The security of Android Unlock Patterns can be improved either by (a) increasing the TPS or (b) expanding the EPS. Different methods have been applied and evaluated, like password strength meters\footnote{Indicating password strength during creation process using visual or textual representations for week, medium and strong.}~\cite{Sun2014308, siadati2015fortifying}, random starting point~\cite{siadati2015fortifying}, alternative patterns (e.g. circle)~\cite{Uellenbeck:2013:QSG:2508859.2516700} and increasing grid size\footnote{Aviv et al. ``Do bigger grid sizes mean better passwords? 3x3 vs. 4x4 Grid Sizes for Android Unlock Patterns'', poster at SOUPS 2015}.
+
+To the best of my knowledge, there is no user feedback during the creation process evaluated or tested yet. Password strength meters are giving real time feedback about the underlying security measurement, what depends on the used mathematical model calculating a strength score, but it provides no advice for the user on what and why to change something, to accomplish a more secure pattern.
+
+Password composition policies have been studied for textual passwords (e.g.,~\cite{Inglesant:2010:TCU:1753326.1753384, Komanduri:2011:PPM:1978942.1979321}). Applying policies usually results in stronger passwords, but when to strong causing bad usability and strange user behavior. Real-time feedback has an positive impact on usability and can help users create strong passwords with fewer errors~\cite{Shay:2015:SSI:2702123.2702586}.
+
+I want to transfer password-composition policies to graphical passwords in order to increase security, while not decreasing usability. This would be an contribution towards more secure mobile devices.
+
 
 \section{Research Questions}
 \label{sec:question}
-The purpose of this research is to find out, if password creation policies applied to graphical passwords (e.g. Android Unlock Patterns) lead to stronger user chosen passwords, or rather extend the effective password space, with no negative impact on usability. The research questions can be formulated as follows:
+The purpose of this research is to find out, if password-creation policies applied to graphical passwords (e.g. Android Unlock Patterns) lead to stronger user chosen passwords, or rather extend the effective password space, with no negative impact on usability. The research questions can be formulated as follows:
 
 \begin{description}
-	\item[Q1]  Are patterns that are created using a password composition policy stronger (more secure) than patterns created in the conventional way?
-	\item[Q2] Can password composition policies  be applied to graphical passwords with similar implications on security and usability?
+	\item[Q1]  Are user chosen patterns, created using a password-composition policy, stronger (more secure) than patterns created in the conventional way?
+	\item[Q2] Can password-composition policies be applied to graphical passwords with similar implications on security and usability?
 \end{description}
+  
   
 \section{Related Work}
 \label{sec:related}
-TODO - some sentence here
+The following section gives an overview about graphical passwords in general, its possible security attacks  and discusses relevant studies about Android Unlock Patterns and its limitations. In addition latest research about password-composition policies and its impact on security and usability is summarized.
+
+
 \subsection{Graphical Passwords}
 \label{sec:related:grafical}
-* first graphical password by Blonder (1996), Draw A Secret (DAS) by Jermyn et al. (1999), improving DAS by using background images to make user create more complex passwords, called BDAS, Tao and Adams in 2008 Pass-Go, Yet another graphical password (YAGP) proposed by Gao et al. in 2008, read \cite{Sun2014308}, \cite{Oorschot:2008:PMU:1284680.1284685} as a summary or have a look at the work of Biddle et al. \cite{Biddle:2012:GPL:2333112.2333114} for an extensive overview on graphical password during the last 12 years.\\
-* Android Unlock Patterns are very similar to Pass-Go\\
-* also existing research on improving DAS using \textit{password complexity factors} and recommending password rules for DAS (like symmetry, stroke count)[very important!]\cite{Oorschot:2008:PMU:1284680.1284685}
+
+The first graphical password scheme was introduced by Blonder~\cite{blonder1996graphical} in 1996, followed by Draw A Secret (DAS) by Jermyn et al.~\cite{Jermyn:1999:DAG:1251421.1251422} in 1999. DAS was improved by using background images to make users create more complex passwords, called BDAS~\cite{Dunphy:2010:CLR:1837110.1837114}. Tao and Adams in 2008 invented Pass-Go~\cite{tao2008pass}, which is very similar to Android Unlock Patterns. For an extensive overview on graphical passwords read the work of Biddle et al.~\cite{Biddle:2012:GPL:2333112.2333114} or Oorschot and Thorpe~\cite{Oorschot:2008:PMU:1284680.1284685} or for a  short summary Sun et al.~\cite{Sun2014308} is worth reading.
+
+Oorschot and Thorpe~\cite{Oorschot:2008:PMU:1284680.1284685} improved DAS by recommending password rules based on password complexity properties:
+
+\begin{quote}
+	\small
+	\begin{enumerate}
+		\item Require a stroke count of at least [\dots],\\
+		\item Disallow passwords having global reflective (mirror) symmetry [\dots],\\
+		\item Require at least one stroke of length 1.
+	\end{enumerate}
+\end{quote}
+
 
 \subsection{Studies about Android Unlock Pattern}
 \label{sec:relatedstudies}
+
 The results and methods of recent studies are summarize and their limitations are explained, in order of publication time.
-\paragraph{Uellenbeck et al. ~\cite{Uellenbeck:2013:QSG:2508859.2516700}~(2013)} was conducting the first study about security of Android Unlock Patterns\\
-several study on university campus with in total 584 participants generating 2.900 patterns, including a pen \& paper study with 105 participants to collect data about users ``real world'' pattern\\
-bias in starting point towards corners 75\%\\
-people tend to chose adjacent points\\
-found often used typical sub-patterns\\
-pattern strength is measured using partial guessing entropy\cite{bonneau2012science}, which measures the average number of guesses that the optimal attack needs in order to find a correct password (or just fraction of accounts)\\
-using a Markov Model for cracking passwords\\
-found out that entropy is in between 2-digit PIN scheme and 3-digit PIN scheme\\
-alternative patters were evaluated in a second study with 366 participants\\
-a drawback is here that the underlying security model allows no conclusion on how to create a stronger password\\
-only starting point problem can be addressed and $n$-grams, which would lead to dictionary checks\\
-no usability aspects are considered at all
 
-\paragraph{Andriotis et al.~\cite{Andriotis:2013:PSS:2462096.2462098}~(2013)} 
-this paper is resulting in a mixed attack combining physical (trace of fingers on screen, replicating Aviv et al.\cite{Aviv:2010:SAS:1925004.1925009}) and psychological (heuristics about how user set unlock patterns) attacks \\
-a user study with 144 participants was conducted\\
-user had to choose a what they think secure and easy to remember pattern\\
-the following parameter were analyzed for creating heuristics: average pattern length, number of direction changes, start and end points, sub-patterns with length 1-4, based on Shannon's entropy\\
-the secure pattern was longer and included more direction changes\\
-the mixed attack was tested with 22 participants, resulting in cracking 20 of 22 patterns.
+\paragraph{2013--Uellenbeck et al. ~\cite{Uellenbeck:2013:QSG:2508859.2516700}} They conducted the first study about security of Android Unlock Patterns. Several studies on university campus with in total 584 participants generating 2.900 patterns was carries out. It including a pen\&paper study with 105 participants, to collect data about users ``real world'' pattern. They observed a bias in starting point towards corners with 75\% probability and a tendency that people tend to chose adjacent points. They also found often used typical sub-patterns.
 
-\paragraph{Sun et al.~\cite{Sun2014308}~(2014)}
-analyzed characteristic (number of dots, physical length, intersections, overlaps of all available patterns and its distribution)\\
-two different pattern strength meters were evaluated during a user study conducted on university campus with 81 participants\\
-They showed that a password strength meter, which gives feedback about the strength of password (week, medium, strong), had an positive effect on password strength. People using the password strength meter, created  password with more dots, longer length and more intersections.\\
-they state that pattern strength is largely determined by its visual complexity, so based on characteristics the formula calculating entropy\cite{burr2004electronic} is modified\\
-Also they analyzed characteristic, but don't use those findings for giving constructive feedback to the user, of how to create a strong pattern.\\
-also distribution of user chosen passwords with respect to characteristics is missing\\
-The study lacks to measure the memorability (usability) of the created passwords.
+Pattern strength is measured using \textit{partial guessing entropy}~\cite{bonneau2012science}, which measures the average number of guesses that the optimal attack needs in order to find a correct password (or just fraction of accounts). They trained a Markov-chain model for cracking passwords. They found out that the entropy is in between a 2-digit PIN scheme and a 3-digit PIN scheme. Based on those findings alternative patters (e.g. circle, random) were evaluated in a second user study with 366 participants.
 
-\paragraph{Aviv et al.~\cite{Aviv:2014:UVP:2664243.2664253}~(2014)}
-This study focuses on visual perception of usability and security. Participants (384 from Amazon Mechanical Turk, resulting in 2.000 rated password) had to choose between two passwords (pairwise preference) the one who looks (a) more secure and (b) more usable. They found out that usability and security are inversely related.\\
-visual features that can be attributed to complexity indicated a stronger perception of security, spatial features (shifts up/down, left/right) are not so strong indicators for security or usability\\
-they built an logistic model to predict perception preference by training on features used in the survey and other related work\\
-they achieved 70\%  of predicted preference\\
-the strongest feature is password length (total length of all lines)\\
-features measured are: number of points, crosses (and exes), non-adjacent, knight-moves, height, side)\\
-Perceived security is a good indicators but not identical to standard metrics for password strength.\\
-Conclusion could be that users need to be educated about security.\\
-Also perceived usability needs to be evaluated, if it hold ins practice (memorability, error rates, and so on).
+A drawback is here, that the underlying security model allows no conclusion on how to create a stronger password. Only the starting point problem is addressed here and $n$-grams, which would lead to dictionary checks. As the focus lies on security improvement, no usability aspects are considered at all.
 
-\paragraph{Siadati et al.~\cite{siadati2015fortifying}~(2015)}
-increasing strength of by using a persuasive security framework\cite{forget2007persuasion}, \cite{forget2008persuasion}, a set of principles to get user to behave more securely\\
-conducting a user study with 270 participants form Amazon Mechanical Turk\\
-two improvements were tested to expand EPS: (1) BLINK (suggested starting point), EPSM (continues feed during creation: strong, medium, weak)\\
-60\% strong passwords with BLINK and 77\% strong passwords with EPSM\\
-using same Markov Chain model as Uellenbeck et al.\cite{Uellenbeck:2013:QSG:2508859.2516700}\\
-Also here is no feedback given of how to create a stronger password.\\
-``EPSM does not provide any hint on how to create a better pattern because users are already aware of which patterns are more secure.'' The next sentence is ``strength of pattern 2(b) and 2(d) is almost same, where their strength is not the same in reality'' This is definitely a conflict, which needs to be further investigated and is in line with findings from Aviv et al.\cite{Aviv:2014:UVP:2664243.2664253}.
+
+\paragraph{2013--Andriotis et al.~\cite{Andriotis:2013:PSS:2462096.2462098}} 
+This paper is resulting in a mixed attack combining physical (trace of fingers on screen, replicating Aviv et al.~\cite{Aviv:2010:SAS:1925004.1925009}) and psychological (heuristics about how user set unlock patterns) attacks. A user study with 144 participants was conducted. User had to create a what they think ``secure'' and ``easy to remember'' pattern. The following parameters were analyzed for creating heuristics: average pattern length, number of direction changes, start and end points, sub-patterns with length one to four. The evaluation based on Shannon's entropy. The secure pattern was longer and included more direction changes. In the end the mixed attack was tested with 22 participants, resulting in cracking 20 of 22 patterns.
+
+
+\paragraph{2014--Sun et al.~\cite{Sun2014308}}
+They started with a detailed statistical analysis on all possible pattern looking at characteristic (number of dots, physical length, intersections, overlaps) and its distributions. Two different pattern strength meters were evaluated during a user study conducted on university campus with 81 participants. They showed that a password strength meter, which gives instant feedback to the user during the creation process, had an positive effect on security. People using the password strength meter, created passwords with more dots, longer length and more intersections. They state that pattern strength is largely determined by its visual complexity. For calculating entropy, Burr's formula~\cite{burr2004electronic} was modified based the  characteristics.
+
+Although they analyzed characteristic, they don't transform those findings into constructive feedback, of how to create a strong pattern. Also a distribution analysis of user chosen passwords with respect to characteristics is missing. The study lacks to measure the memorability (usability) of the created passwords.
+
+\paragraph{2014--Aviv et al.~\cite{Aviv:2014:UVP:2664243.2664253}}
+This study focuses on visual perception of usability and security. 384 participants (from MTurk) had to choose between two passwords (pairwise preference) the one who looked (a) more secure and (b) more usable. They found out that usability and security are inversely related. Visual features that can be attributed to complexity indicated a stronger perception of security, spatial features (shifts up/down, left/right) are not so strong indicators for security or usability. They built an logistic model to predict perception preference by training on features used in the survey and other related work. They achieved 70\%  of predicted preference. The strongest feature, they found out, is password length (sum of all euclidean length). They measured the following features: number of points, crosses (and exes), non-adjacent, knight-moves, height, side.
+
+Perceived security is a good indicators, but not identical to standard metrics for password strength. A conclusion could also be that users need to be educated about security. Also perceived usability needs to be evaluated, if it hold ins practice (memorability, error rates, and so on).
+
+\paragraph{2015--Siadati et al.~\cite{siadati2015fortifying}}
+They increased the strength of user chosen patterns by using a \textit{persuasive security framework}~\cite{forget2007persuasion, forget2008persuasion}, a set of principles to get users to behave more securely. They conducted a user study with 270 participants form MTurk to evaluate and test
+two improvements expanding EPS: (1)~BLINK (suggested starting point) and (2)~EPSM (continues visual feedback during creation). With creating 60\% strong passwords with BLINK and 77\% strong passwords with EPSM, they raised security noticeable. They used the same Markov-chain model as Uellenbeck et al.~\cite{Uellenbeck:2013:QSG:2508859.2516700}
+
+Also here is no feedback given of how to create a stronger password.
+
+\begin{quote}
+	\small
+	EPSM does not provide any hint on how to create a better pattern because users are already aware of which patterns are more secure. [\dots] strength of pattern 2(b) and 2(d) is almost same, where their strength is not the same in reality~[\dots]
+\end{quote}
+
+This is definitely a conflict, which needs to be further investigated and is in line with findings from Aviv et al.\cite{Aviv:2014:UVP:2664243.2664253}.
+
 
 \subsection{Attacks on graphical Passwords}
 \label{sec:related:attacks}
-Knowledge factor attacks on graphical passwords can be divided into\textit{(1) guessing or psychological attacks} (e.g. bias in patterns like skewed distribution, to limit search space, dictionary attacks it textual passwords, brute force guessing) and \textit{(2) capture or physical attacks}, also called side-channel attacks (smudge attack, shoulder surfing)\\
-* smudge attacks are studied  studied by Aviv et al. \cite{Aviv:2010:SAS:1925004.1925009}\\
-Improving security (generating more complex patterns) makes it automatically more resistant to (1) guessing attacks, because ... 
 
-\subsection{Password Composition Policies}
+Knowledge factor attacks on graphical passwords can be divided into:
+
+\begin{description}
+	\item[guessing or psychological attacks] e.g. bias in patterns like skewed distribution, to limit search space, dictionary attacks like textual passwords, brute force guessing
+	\item[capture or physical attacks] also called side-channel attacks, e.g., smudge attack, shoulder surfing
+\end{description}
+
+Smudge attacks are studied by Aviv et al.~\cite{Aviv:2010:SAS:1925004.1925009} in detail. Using photographs, they showed that it was possible to full or partial recover patterns. Generating more complex pattern makes it automatically more resistant to (1) and (2), bt would need to be investigated further. 
+
+
+\subsection{Password-Composition Policies}
 \label{sec:related:policies}
-* Looking at textual password a study by Shay et. al. shows that real-time feedback while password creation helps the user to create stronger passwords with fewer errors. But also password policies may cause usability problems. \cite{Shay:2015:SSI:2702123.2702586}\\
-usability and security of passphrases\footnote{passphrases are longer passwords consisting of multiple words.} is studied by Keith et al.\cite{Keith200717}, stating that ``passphrases lead to more typographical errors, are perceived as more difficult to use, but are actually no more difficult to remember than other password methods.''\\
-Password policies requiring length lead to more usability, and in some cases more security, than those requiring only a comprehensive mix of character classes and a dictionary check.\cite{Shay:2014:LPS:2556288.2557377}.\\
-Inglesant and Sasse\cite{Inglesant:2010:TCU:1753326.1753384} 
-conclude that ``rather than focussing password policies on maximizing password strength and enforcing frequency alone, policies should be designed using HCI principles to help the user to set an appropriately strong password in a specific context of use.''.\\
-Komanduri et al.~\cite{Komanduri:2011:PPM:1978942.1979321} found out that commonly held beliefs about password composition and strength are inaccurate:
-\begin{enumerate}
-	\item Adding numbers to passwords is thought to add little entropy; we found, by contrast, a lot of entropy in numbers.
-	\item Dictionary checks, although other- wise useful, add much less entropy than expected.
-	\item Unexpectedly, users typically create passwords that exceed minimum requirements, thus increasing password entropy
-\end{enumerate}
+Looking at textual passwords a study by Shay et. al. shows that real-time feedback during password creation helps the user to create stronger passwords with fewer errors. But also password policies may cause usability problems.~\cite{Shay:2015:SSI:2702123.2702586}. Usability and security of passphrases\footnote{Passphrases are longer passwords consisting of multiple words.} is studied by Keith et al.~\cite{Keith200717}, stating that ``passphrases lead to more typographical errors, are perceived as more difficult to use, but are actually no more difficult to remember than other password methods.''. ``Password policies requiring length lead to more usability, and in some cases more security, than those requiring only a comprehensive mix of character classes and a dictionary check.''~\cite{Shay:2014:LPS:2556288.2557377}. Inglesant and Sasse~\cite{Inglesant:2010:TCU:1753326.1753384} conclude that ``rather than focusing password policies on maximizing password strength and enforcing frequency alone, policies should be designed using HCI principles to help the user to set an appropriately strong password in a specific context of use.''. Komanduri et al.~\cite{Komanduri:2011:PPM:1978942.1979321} found out that commonly held beliefs about password composition and strength are inaccurate:
+\begin{quote}
+	\small
+	\begin{enumerate}
+		\item Adding numbers to passwords is thought to add little entropy; we found, by contrast, a lot of entropy in numbers.
+		\item Dictionary checks, although other- wise useful, add much less entropy than expected.
+		\item Unexpectedly, users typically create passwords that exceed minimum requirements, thus increasing password entropy
+	\end{enumerate}
+\end{quote}
 
-Password composition policies do have an positive effect on security and with keeping HCI principles in mind, not effecting usability in a negative way.
+Password-composition policies do have an positive effect on security and with keeping HCI principles in mind, not effecting usability in a negative way.
+
 
 \section{Security Measurement}
 \label{sec:security}
-The \emph{security} or \emph{strength} of a graphical password describe how hard it is for an attacker to guess or crack the pattern~\cite{Keith200717}. What people think or perceive as secure is not in line with what really is secure.~\cite{Aviv:2014:UVP:2664243.2664253}. Different approaches to measure pattern strengths can be found in recent work:
+The \emph{security} or \emph{strength} of a graphical password describe how hard it is for an attacker to guess or crack the pattern~\cite{Keith200717}. What people think or perceive as secure is not in line with what really is secure~\cite{Aviv:2014:UVP:2664243.2664253}. Different approaches to measure pattern strengths can be found in recent work:
 
 \begin{description}
-	\item[Guessing Entropy] can be used to measure strength of password distribution. Measures the average number of guesses that the optimal attack needs in order to find the correct password.[TODO/cite]
+	\item[Guessing Entropy] Can be used to measure strength of password distribution. Measures the average number of guesses that the optimal attack needs in order to find the correct password.~\cite{massey1994guessing}
 	
-	\item[Partial Guessing Entropy ($\alpha$-guesswork)] by Bonneau~\cite{Bonneau:2012:QRP:2310656.2310722} finds the minimal number so that the guesses cover at least a fraction $\alpha$ of the passwords (used in~\cite{Uellenbeck:2013:QSG:2508859.2516700}).
+	\item[Partial Guessing Entropy ($\alpha$-guesswork)] by Bonneau~\cite{Bonneau:2012:QRP:2310656.2310722}. Finds the minimal number so that the guesses cover at least a fraction $\alpha$ of the passwords (used in~\cite{Uellenbeck:2013:QSG:2508859.2516700}).
 	
 	\item[Shannon's entropy] monograms, start and end points, entropy is calculated based on probability of point $X$ being selected in the pattern or being at start (or end), for $n$-grams conditional entropy is calculated (used in~\cite{Aviv:2014:UVP:2664243.2664253}).
 	
-	\item[Modified entropy formula] Burr's~\cite{burr2004electronic} entropy formula is modified for graphical password adding scores for visual complexity,  based on pattern characteristics (used in~\cite{Sun2014308}).
+	\item[Modified entropy formula] Burr's~\cite{burr2004electronic} entropy formula is modified for graphical password adding a score for visual complexity,  based on pattern characteristics (used in~\cite{Sun2014308}).
 	
-	\item[Score Function MM-score] score function $f(X)$ based on the probabilistic of a given pattern $X$, using the Markov model by Uellenbeck~\cite{Uellenbeck:2013:QSG:2508859.2516700}, a more likely pattern gets a lower score, and a less likely one get a higher score (used in~\cite{siadati2015fortifying}).
+	\item[Score Function MM-score] score function $f(X)$ based on the probabilistic of a given pattern $X$, using the Markov model by Uellenbeck~\cite{Uellenbeck:2013:QSG:2508859.2516700}, so a more likely pattern gets a lower score, and a less likely one get a higher score (used in~\cite{siadati2015fortifying}).
 \end{description}
+
 
 \section{Pattern Characteristic}
 \label{sec:characteristics}
-Pattern characteristics or visual complexity features were looked at a lot when doing pattern  analysis. Those characteristics are very promising in relation to giving user feedback. The following part summarizes used features in recent literature about Android Unlock Patterns and graphical passwords in general:
+
+Pattern characteristics or visual complexity features were looked at when doing pattern analysis. Those characteristics are very promising in relation to giving user feedback. The following part summarizes used features in recent literature about Android Unlock Patterns and graphical passwords in general:
 
 \begin{itemize}
-	\item Start point
-	\item End point
-	\item Size (number of connected dots)
-	\item Length (sum over all lines between dots)
-	\item intersections (two groups: X crossings with angle 90 and others)
+	\item start point
+	\item end point
+	\item size (number of connected dots)
+	\item length (sum over all euclidian distances between dots)
+	\item Intersections (two groups: X crossings with angle 90 and others)
 	\item overlaps (no crossing but touching)
 	\item non-adjacent
-	\item knigth moves
+	\item knight moves
 	\item height
 	\item side
-	\item Sub-Patterns with different number of dots
-	\item Direction Changes
-	\item symmetry (vertical, horizontal)
+	\item sub-patterns with different number of dots
+	\item direction changes
+	\item symmetry (vertical/horizontal)
 \end{itemize}
 
 In 1957, Attneave~\cite{attneave1957physical} studied the judged complexity problem of shapes, and concluded that the complexity is related to the number of turns in the contour of the shape, the symmetry of the shape, and the variability of angular change between successive turns.
 
+
 \section{Usability Measurement}
 \label{sec:usability}
-* The term \emph{usability} describes how easy a password is for a user to both remember and correctly enter into a login prompt.\cite{Keith200717}\\
-Usually usability and security are seen as counterparts, but the goal should be increase usability and security simultaneously. For extensive recommendations regarding methods for evaluation of usability (e.g., login success rates, login times, password creation times) and also security see~\cite{Biddle:2012:GPL:2333112.2333114}. Recommendations are given for lab, field and web-based studies.\\
-Memorability needs to be tested, shot and long term
+
+The term \emph{usability} describes how easy a password is for a user to both remember and correctly enter into a login prompt~\cite{Keith200717}. Usually usability and security are seen as counterparts, but the goal should be to increase usability and security simultaneously. For extensive recommendations regarding methods for evaluation of usability (e.g., login success rates, login times, password creation times) and also security see~\cite{Biddle:2012:GPL:2333112.2333114}. Recommendations are given for lab, field and web-based studies. The most important task regarding usability testing related to passwords are short and long term memorability tests.
 
 \section {Methods to Improve Security}
 \label{sec:improve}
-Summary on different methods (some are tested already) to improve security found in literature. Two different approaches:
+This part summarizes different methods (some are tested already) to improve security found in literature. In general there are two different approaches:
 
 \begin{description}
-	\item[expand EPS] manipulate pattern (e.g., removing top left dot), rearrange pattern (e.g., random \&circle patterns), blacklisting (similar to dictionary checks), random assignment (random starting point), user education (password meter)
-	\item[increase TPS] change pattern size (e.g., from $3x3$ to $4x4$
+	\item[expand EPS] manipulate pattern (e.g., removing top left dot), rearrange pattern (e.g., random \& circle patterns), blacklisting (similar to dictionary checks), random assignment (random starting point), user education (password meter)
+	\item[increase TPS] change pattern size (e.g., from $3x3$ to $4x4$)
 \end{description}
 
 \section{Research Idea}
 \label{sec:idea}
-The aim is to improve the security of Android Unlock pattern, while keeping usability in mind. Improving security can be achieved in different ways, as shown in section~\ref{sec:improve}, but providing feedback to the user during the password creation process has not been evaluated yet. The password strength meter evaluated by Sun\cite{Sun2014308} and Siadati~\cite{siadati2015fortifying} is a good starting point but should be studied further. The underlying characteristics of patterns~\ref{sec:characteristics} can be used to derive constructive feedback, which will help the user to understand what to do, to generate a stronger password. Research has shown that feedback has an positive effect to security of textual password (see section~\ref{sec:related:policies}), but this has to be evaluated for graphical password as well, not only transferred.\\
+The aim is to improve the security of Android Unlock pattern, while keeping usability in mind. Improving security can be achieved in different ways (see section~\ref{sec:improve}), but providing feedback to the user during the password creation process has not been evaluated yet. The password strength meter evaluated by Sun~\cite{Sun2014308} and Siadati~\cite{siadati2015fortifying} is a good starting point, but should be studied further. The underlying characteristics of patterns (see section~\ref{sec:characteristics}) can be used to derive constructive feedback, which will help the user to understand what to do, to generate a stronger password. Research has shown that feedback has an positive effect to security of textual password (see section~\ref{sec:related:policies}), but this has to be evaluated for graphical password as well, only transfering is not sufficient.
 
-Furthermore, I think people are not completely aware of the rules on how to create a pattern. Especially I think not all users know about crossings and overlying lines. This would need to be investigated.\\
+Furthermore, I think people are not completely aware of the rules on how to create a pattern. Especially I think not all users know about crossings and overlying lines. This would need to be investigated as well.[TODO/studie wiederfinden]
+
 
 \section{Research Plan}
 \label{sec:plan}
@@ -235,18 +250,18 @@ Furthermore, I think people are not completely aware of the rules on how to crea
 My research plan consist of the following steps:\\
 
 \begin{enumerate}
-	\item Conduct a pen \& paper study on construction rules
-	\item Evaluate summarized security measurements~\ref{sec:security}
+	\item Conduct a pen \& paper study on pattern construction rules
+	\item Evaluate summarized security measurements (see section~\ref{sec:security})
 	\item Invent a new measurement or use existing security measurements
-	\item Rate existing password characteristics~\ref{sec:characteristics} based on some criteria (which needs to be defined first)
+	\item Rate existing password characteristics~ (see section~\ref{sec:characteristics}) based on some criteria (which needs to be defined first)
 	\item Derive different policies $P_1, P_2, \dots P_n$ from most promising characteristics
 	\item Create prototype for feedback interface
 	\item Test invented policies and feedback interface with pen \& paper
 	\item Improve policies and feedback interface
-	\item Conducting a User Study\footnote{with following recommendations by Biddle et al.~\cite{Biddle:2012:GPL:2333112.2333114}}
+	\item Conducting a user study\footnote{with following recommendations by Biddle et al.~\cite{Biddle:2012:GPL:2333112.2333114}}
 \end{enumerate}
 
-The most important and at the same time challenging part is to measurement for evaluating the influence of invented policies. The Markov Chain model using partial guessing entropy by Uellenbeck~\cite{Uellenbeck:2013:QSG:2508859.2516700} seem promising and will be used as a first try.
+The most important and at the same time challenging part is to ``find'' a measurement for evaluating the influence of invented policies. The Markov Chain model using partial guessing entropy by Uellenbeck~\cite{Uellenbeck:2013:QSG:2508859.2516700} seems promising and will be used as a first try.
 
 {
 	\bibliographystyle{plain}
