@@ -29,7 +29,7 @@
 
 \begin{document}
 \title{
-	Improving the Security of Android Unlock Patterns by giving Feedback to the User during the Password-Creation Process}
+	Improving the Security of Android Unlock Patterns by giving Feedback to the User during the Password Creation Process}
 
 \author{
 	Alexa Schlegel
@@ -54,18 +54,21 @@ The following research proposal aims to introduce password creation policies int
 \section{Introduction}
 \label{sec:intro}
 
-Authentication on smart phones needs to be done on a regular basis for unlocking the device. Different manufacturers implemented various authentication methods. Widely used and well known are textual password and PIN numbers. Looking at the distribution of smart phone today, Android phones are dominating the market with about 78.0\%\footnote{\url{http://www.idc.com/prodserv/smartphone-os-market-share.jsp}, 31.08.2015 - 12:52PM} marked share. The Android Unlock Pattern, a \textit{recall-based} graphical password scheme is the default authentication choice and therefor used very often. According to recent studies about 50\% of Android users are using Android unlock pattern~\cite{VanBruggen:2013:MSU:2501604.2501614, van2014studying}.
+Authentication on smartphones needs to be done on a regular basis for unlocking the device. Different manufacturers implemented various authentication methods. Widely used and well known are textual password and PIN numbers. Looking at the distribution of smartphones today, Android phones are dominating the market with about 78.0\%\footnote{\url{http://www.idc.com/prodserv/smartphone-os-market-share.jsp}, 31.08.2015 - 12:52PM} marked share. The Android Unlock Pattern, a \textit{recall-based} graphical password scheme, is the default authentication choice and therefor used very often. According to recent studies about 50\% of Android users are using Android Unlock Pattern~\cite{VanBruggen:2013:MSU:2501604.2501614, van2014studying}.
 
-Like textual passwords, a graphical password scheme is a \textit{knowledge-based} authentication mechanism in which users enter a shared secret as evidence of their identity. During enrollment, the user has to choose a pattern with four to nine dots and during the authentication phase, needs to recall the pattern and draw the path on the screen. The user can select a path according to the following rules:
+Like textual passwords, a graphical password scheme is a \textit{knowledge-based} authentication mechanism in which users enter a shared secret as evidence of their identity. During enrollment, the user has to choose a pattern with four to nine dots and during the authentication phase, needs to recall the pattern and draw the path on the screen.\\
+
+The user can select a path according to the following rules:
 
 \begin{enumerate}
-	\item at least 4 points must be chosen
-	\item no point can be used twice
-	\item only straight lines are allowed
-	\item one cannot jump over points not visited before
+	\small
+	\item four to nine dots have to be used
+	\item one dot can be used only once
+	\item dots are connected with a straight line
+	\item one cannot jump over dots not visited before
 \end{enumerate}
 
-Textual passwords are typically difficult to remember, also depending on length, and are predictable if users are allowed to chose passwords. Graphical password schemes have been proposed as a alternative to overcome those usability and security issues. The reduced memory burden will facilitate the selection and use of more secure or less predictable passwords, but It is now clear that the graphical nature of schemes does not, by itself, avoid the problems typical of text password systems.~\cite{Biddle:2012:GPL:2333112.2333114}
+Textual passwords are typically difficult to remember, also depending on length, and are predictable if users are allowed to chose passwords. Graphical password schemes have been proposed as a alternative to overcome those usability and security issues. ``The reduced memory burden will facilitate the selection and use of more secure or less predictable passwords, but It is now clear that the graphical nature of schemes does not, by itself, avoid the problems typical of text password systems.''~\cite{Biddle:2012:GPL:2333112.2333114}
 
 The \textit{theoretical password space}~(TPS) is the total number of unique passwords that can be generated according to the given rules, in contrast the \textit{effective password space}~(EPS)  is the number of passwords in the TPS that are likely to be chosen by real-world users.~\cite{forget2007persuasion} The TPS of Android Unlock Pattern contains 389.112 possible patterns~\cite{Aviv:2010:SAS:1925004.1925009}, which makes it in theory more secure than a 5-digit PIN scheme.
 
@@ -160,11 +163,11 @@ This is definitely a conflict, which needs to be further investigated and is in 
 Knowledge factor attacks on graphical passwords can be divided into:
 
 \begin{description}
-	\item[guessing or psychological attacks] e.g. bias in patterns like skewed distribution, to limit search space, dictionary attacks like textual passwords, brute force guessing
-	\item[capture or physical attacks] also called side-channel attacks, e.g., smudge attack, shoulder surfing
+	\item[(1) guessing or psychological attacks] e.g. bias in patterns like skewed distribution, to limit search space, dictionary attacks like textual passwords, brute force guessing
+	\item[(2) capture or physical attacks] also called side-channel attacks, e.g., smudge attack, shoulder surfing
 \end{description}
 
-Smudge attacks are studied by Aviv et al.~\cite{Aviv:2010:SAS:1925004.1925009} in detail. Using photographs, they showed that it was possible to full or partial recover patterns. Generating more complex pattern makes it automatically more resistant to (1) and (2), bt would need to be investigated further. 
+Smudge attacks are studied by Aviv et al.~\cite{Aviv:2010:SAS:1925004.1925009} in detail. Using photographs, they showed that it was possible to full or partial recover patterns. Generating more complex pattern makes it automatically more resistant to (1) and (2), but would need to be investigated further. 
 
 
 \subsection{Password-Composition Policies}
@@ -230,12 +233,16 @@ The term \emph{usability} describes how easy a password is for a user to both re
 
 \section {Methods to Improve Security}
 \label{sec:improve}
-This part summarizes different methods (some are tested already) to improve security found in literature. In general there are two different approaches:
+This part summarizes different methods to improve security found in literature. In general there are two different approaches: (1) expand effective password space, (2) increase theoretical password space, in order to indirectly expand effective password space. 
 
-\begin{description}
-	\item[expand EPS] manipulate pattern (e.g., removing top left dot), rearrange pattern (e.g., random \& circle patterns), blacklisting (similar to dictionary checks), random assignment (random starting point), user education (password meter)
-	\item[increase TPS] change pattern size (e.g., from $3x3$ to $4x4$)
-\end{description}
+\begin{itemize}
+	\item manipulate pattern (e.g., remove top left dot)
+	\item rearrange pattern (e.g., random -- no three points lie on one line, circle pattern)
+	\item blacklisting (e.g., forbidding frequently used or easy to guess patterns, similar to dictionary checks at textural passwords)
+	\item random assignment (e.g., random assigned pattern, random starting point)
+	\item user education (e.g., password strength meter)
+	\item change pattern size (e.g. from $3x\times3$ to $4\times4$)
+\end{itemize}
 
 \section{Research Idea}
 \label{sec:idea}
